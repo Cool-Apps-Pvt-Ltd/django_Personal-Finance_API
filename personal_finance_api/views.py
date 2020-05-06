@@ -1,7 +1,8 @@
 from rest_framework.views import APIView
 from rest_framework.response import Response
-from rest_framework import status
-from personal_finance_api import serializers
+from rest_framework import status, viewsets
+from rest_framework.authentication import TokenAuthentication
+from personal_finance_api import serializers, models, permissions
 
 
 class UserProfileView(APIView):
@@ -40,3 +41,11 @@ class UserProfileView(APIView):
         """User Profile DELETE API - Updates only entered fields in profile"""
         response = {'message': 'delete'}
         return Response(response, status.HTTP_200_OK)
+
+class UserProfileViewSet(viewsets.ModelViewSet):
+    """User Profile GET/POST/DELETE/PUT/PATCH API"""
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+    authentication_classes = (TokenAuthentication, )
+    permission_classes = (permissions.UpdateOwnProfile, )
+
