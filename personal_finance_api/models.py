@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
+from personal_finance_api.constants import *
 
 
 class UserProfileManager(BaseUserManager):
@@ -54,3 +55,21 @@ class UserProfile(AbstractBaseUser, PermissionsMixin):
     def __str__(self):
         """Return string representation of the user"""
         return self.email
+
+
+class OrganizationModel(models.Model):
+    """Organization Container to have finance details of a family"""
+    home_name = models.CharField(default='My Home', max_length=20,)
+    license_state = models.CharField(default='L', choices=ORG_LICENSE_STATE, blank=False, max_length=1)
+    license_expiry = models.DateField(blank=False, default='2024-12-12')
+    dashboard_currency = models.CharField(default='INR', choices=CURRENCIES, max_length=3)
+    user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True, )
+
+
+class MemberModel(models.Model):
+    """Members of the home org"""
+    name = models.CharField(max_length=10, blank=False, default="Family" )
+    org = models.ForeignKey(OrganizationModel, on_delete=models.CASCADE)
+    class Meta:
+        unique_together = (('org', 'name',))
+        index_together = (('org', 'name',))

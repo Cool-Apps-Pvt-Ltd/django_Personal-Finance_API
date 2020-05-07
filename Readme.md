@@ -29,4 +29,16 @@ PersonalFinance REST API Project
 1. Removed UserProfileApiView from personal_finance_api/views.py as testing is complete
 2. Created LoginApiView in personal_finance_api/views.py to allow user login. Users can update profile if logged in, using the token. 
 3. Updated personal_finance_api/urls.py to enable Login Endpoint 
-4. 'django.middleware.csrf.CsrfViewMiddleware' CSRF Validation is disabled 
+4. 'django.middleware.csrf.CsrfViewMiddleware' CSRF Validation is disabled [Commit - d9f61ba..ac9c558  master -> master]
+
+# Home Organization Model [GIT Branch Created - setup-organization]
+1. Created OrganizationModel in personal_finance_api/models.py
+2. Created OrganizationSerializer in personal_finance_api/serializers.py
+3. Created OrganizationViewSet in personal_finance_api/views.py
+4. Created personal_finance_api/signals.py to handle signals/connectors
+5. Added Permissions, TokenAuth for OrgUpdate and OrgGet
+6. Created MemberModel personal_finance_api/models.py
+7. Created MemberSerializer in personal_finance_api/serializers.py
+8. Created MemberViewSet in personal_finance_api/views.py
+9. Added connector create_member in personal_finance_api/signals.py to create a member when home org is created
+10. Updated personal_finance_api/__init__.py to add signals

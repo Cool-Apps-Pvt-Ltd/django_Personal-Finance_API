@@ -23,3 +23,26 @@ class UserProfileSerializer(serializers.ModelSerializer):
         )
 
         return user
+
+
+class OrganizationSerializer(serializers.ModelSerializer):
+    """Serializes Home Organization Container Object"""
+    class Meta:
+        model = models.OrganizationModel
+        fields = ('id', 'home_name', 'license_state', 'license_expiry', 'dashboard_currency', 'user')
+        extra_kwargs = {
+            'user': {'read_only': True,},
+            'license_state': {'read_only': True,},
+            'license_expiry': {'read_only': True,},
+        }
+
+
+class MemberSerializer(serializers.ModelSerializer):
+    """Serializes Members in an Org"""
+    class Meta:
+        model = models.MemberModel
+        fields = ('id', 'name', 'org',)
+        extra_kwargs = {
+            'org': {'read_only': True,},
+        }
+
