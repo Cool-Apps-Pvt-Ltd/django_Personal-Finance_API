@@ -1,4 +1,4 @@
-#For personal_finance_api/models
+# For personal_finance_api/models
 ORG_LICENSE_STATE = [
     ('F', 'Free'),
     ('T', 'Trial'),
@@ -12,4 +12,3 @@ CURRENCIES = [
     ('USD', 'US Dollar'),
     ('EUR', 'EURO'),
 ]
-
