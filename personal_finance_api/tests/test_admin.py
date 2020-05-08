@@ -32,7 +32,8 @@ class AdminSiteTests(TestCase):
 
     def test_user_change_page(self):
         """Test that user edit page works"""
-        url = reverse('admin:personal_finance_api_userprofile_change', args=[self.user.id])
+        url = reverse('admin:personal_finance_api_userprofile_change',
+                      args=[self.user.id])
         response = self.client.get(url)
 
         self.assertEqual(response.status_code, 200)
