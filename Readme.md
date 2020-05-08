@@ -49,4 +49,5 @@ PersonalFinance REST API Project
 3. Updated docker-compose.yml [Commit - 3b767b5..1ceb562  setup-organization -> setup-organization]
 4. Cleaned-up imports across app as Travis-ci test fails [Commit - 1ceb562..63e31f7  setup-organization -> setup-organization]
 5. Cleaned-up file formatting [Commit - 63e31f7..2dcd607  setup-organization -> setup-organization]
-6. Cleaned-up file formatting[Commit - 2dcd607..2253233  setup-organization -> setup-organization]
+6. Cleaned-up file formatting [Commit - 2dcd607..2253233  setup-organization -> setup-organization]
+7. Cleaned-up file formatting [Commit - 2253233..bac5dcb  setup-organization -> setup-organization]
