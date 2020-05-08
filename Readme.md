@@ -56,4 +56,6 @@ Travis-ci Test passed successfully till this point
 
 # Writing Unit tests
 1. Created personal_finance_api/tests directory for unit tests
-2. Added Unit tests for User Creation, Super User creation 
+2. Added Unit tests for User Creation, Super User creation [Commit - 264f2a9..0f32d04  setup-organization -> setup-organization]
+3. Updated personal_finance_api/models.py create_superuser method to return user
+4. Updated personal_finance/settings.py to enable DEBUG depending on env variables 
