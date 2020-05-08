@@ -43,5 +43,7 @@ PersonalFinance REST API Project
 9. Added connector create_member in personal_finance_api/signals.py to create a member when home org is created
 10. Updated personal_finance_api/__init__.py to add signals [Commit - ac9c558..c14ca15  setup-organization -> setup-organization]
 
-# Docker 
-1. Setup Dockerfile and docker-compose.yml
+# Docker, Travis-ci and flack8
+1. Setup Dockerfile and docker-compose.yml [Commit - c14ca15..29bb4f8  setup-organization -> setup-organization]
+2. Travis-ci integration added
+3. 
