@@ -45,5 +45,5 @@ PersonalFinance REST API Project
 
 # Docker, Travis-ci and flack8
 1. Setup Dockerfile and docker-compose.yml [Commit - c14ca15..29bb4f8  setup-organization -> setup-organization]
-2. Travis-ci integration added
+2. Travis-ci integration added [Commit - 29bb4f8..3b767b5  setup-organization -> setup-organization]
 3. 
