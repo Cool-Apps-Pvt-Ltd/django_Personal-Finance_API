@@ -1,5 +1,6 @@
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
+
 from personal_finance_api import views
 
 router = DefaultRouter()

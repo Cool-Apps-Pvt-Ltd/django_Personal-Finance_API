@@ -48,3 +48,4 @@ PersonalFinance REST API Project
 2. Travis-ci integration added [Commit - 29bb4f8..3b767b5  setup-organization -> setup-organization]
 3. Updated docker-compose.yml [Commit - 3b767b5..1ceb562  setup-organization -> setup-organization]
 4. Cleaned-up imports across app as Travis-ci test fails [Commit - 1ceb562..63e31f7  setup-organization -> setup-organization]
+5. Cleaned-up file formatting [Commit - 63e31f7..2dcd607  setup-organization -> setup-organization]
