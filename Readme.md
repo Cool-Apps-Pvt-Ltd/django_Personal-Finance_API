@@ -41,4 +41,7 @@ PersonalFinance REST API Project
 7. Created MemberSerializer in personal_finance_api/serializers.py
 8. Created MemberViewSet in personal_finance_api/views.py
 9. Added connector create_member in personal_finance_api/signals.py to create a member when home org is created
-10. Updated personal_finance_api/__init__.py to add signals
+10. Updated personal_finance_api/__init__.py to add signals [Commit - ac9c558..c14ca15  setup-organization -> setup-organization]
+
+# Docker 
+1. Setup Dockerfile and docker-compose.yml
