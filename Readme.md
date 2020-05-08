@@ -58,4 +58,10 @@ Travis-ci Test passed successfully till this point
 1. Created personal_finance_api/tests directory for unit tests
 2. Added Unit tests for User Creation, Super User creation [Commit - 264f2a9..0f32d04  setup-organization -> setup-organization]
 3. Updated personal_finance_api/models.py create_superuser method to return user
-4. Updated personal_finance/settings.py to enable DEBUG depending on env variables 
+4. Updated personal_finance/settings.py to enable DEBUG depending on env variables [Commit - 0f32d04..f56cc1a  setup-organization -> setup-organization]
+
+# Admin Site Tests
+1. Create personal_finance_api/tests/tests_admin.py 
+2. Added AdminSiteTests class and test_users_listed method to test Admin Site Users
+3. Updated personal_finance_api/admin.py to list Users in Admin Site 
+4. Added test_user_change_page to personal_finance_api/tests/tests_admin.py to test user profile change in admin
