@@ -1,6 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, PermissionsMixin, BaseUserManager
-from personal_finance_api.constants import *
+from .constants import CURRENCIES, ORG_LICENSE_STATE
 
 
 class UserProfileManager(BaseUserManager):
