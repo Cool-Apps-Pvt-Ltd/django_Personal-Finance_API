@@ -51,3 +51,9 @@ PersonalFinance REST API Project
 5. Cleaned-up file formatting [Commit - 63e31f7..2dcd607  setup-organization -> setup-organization]
 6. Cleaned-up file formatting [Commit - 2dcd607..2253233  setup-organization -> setup-organization]
 7. Cleaned-up file formatting [Commit - 2253233..bac5dcb  setup-organization -> setup-organization]
+8. Cleaned-up file formatting [Commit - bac5dcb..264f2a9  setup-organization -> setup-organization]
+Travis-ci Test passed successfully till this point
+
+# Writing Unit tests
+1. Created personal_finance_api/tests directory for unit tests
+2. Added Unit tests for User Creation, Super User creation 
