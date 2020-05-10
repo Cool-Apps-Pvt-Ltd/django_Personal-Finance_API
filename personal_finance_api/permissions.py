@@ -65,7 +65,8 @@ class OrgMemberUpdate(permissions.BasePermission):
             if request.method in ['GET', 'PUT', 'PATCH']:
                 # Allow Users to GET/PUT/PATCH Home Org elements
                 if request.user.is_authenticated and \
-                        requester_user_id == org_user_id and requester_is_active:
+                        requester_user_id == org_user_id and \
+                        requester_is_active:
                     return True
                 # Allow Superusers to access GET/PUT/PATCH org elements
                 if requester_is_superuser or requester_is_staff:
@@ -75,9 +76,11 @@ class OrgMemberUpdate(permissions.BasePermission):
             if request.method in ['DELETE', 'POST']:
                 # Allow Users to DELETE/POST Home Org elements
                 if request.user.is_authenticated and \
-                        requester_user_id == org_user_id and requester_is_active:
+                        requester_user_id == org_user_id and \
+                        requester_is_active:
                     return True
                 # DENY Superusers to DELETE/POST Org elements
                 return False
-        except:
+        except Exception as e:
+            print(e)
             return False
