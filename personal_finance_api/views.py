@@ -1,10 +1,11 @@
 from rest_framework import viewsets, filters, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.views import ObtainAuthToken
-from rest_framework.settings import api_settings
 from rest_framework.response import Response
-from .models import UserProfile, OrganizationModel, MemberModel
+from rest_framework.settings import api_settings
+
 from personal_finance_api import serializers, permissions
+from .models import UserProfile, OrganizationModel, MemberModel
 
 """
 READY and TESTED
@@ -100,8 +101,8 @@ class MemberViewSet(viewsets.ModelViewSet):
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
-                response = {'Message':
-                                str("Cannot modify deleted member: " + member.name)}
+                response = {'Message': str(""
+                                           "Cannot modify deleted member: " + member.name)}
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -120,8 +121,8 @@ class MemberViewSet(viewsets.ModelViewSet):
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
-                response = {'Message':
-                                str("Cannot modify deleted member: " + member.name)}
+                response = {'Message': str(""
+                                           "Cannot modify deleted member: " + member.name)}
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -133,13 +134,14 @@ class MemberViewSet(viewsets.ModelViewSet):
                                               'Error: Cannot modify member \'Family\'! ')
         except Exception as e:
             return super().permission_denied(self.request, e)
+
     def destroy(self, request, *args, **kwargs):
         """Check Member name 'Family' and run DELETE"""
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
-            if member.is_deleted != True:
-                response = {'Message':
-                                str("Cannot modify deleted member: " + member.name)}
+            if member.is_deleted:
+                response = {'Message': str(""
+                                           "Cannot modify deleted member: " + member.name)}
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -147,8 +149,8 @@ class MemberViewSet(viewsets.ModelViewSet):
                 if member.name != 'Family':
                     member.is_deleted = True
                     member.save()
-                    response = {'Message':
-                                    str("Member deleted: "+ member.name)}
+                    response = {'Message': str(""
+                                               "Member deleted: " + member.name)}
                     return Response(response,
                                     status=status.HTTP_200_OK)
                 else:
