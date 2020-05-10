@@ -101,8 +101,9 @@ class MemberViewSet(viewsets.ModelViewSet):
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
-                response = {'Message': str(""
-                                           "Cannot modify deleted member: " + member.name)}
+                response = {
+                    'Message': str("Cannot modify deleted member: " + member.name)
+                }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -121,8 +122,9 @@ class MemberViewSet(viewsets.ModelViewSet):
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
-                response = {'Message': str(""
-                                           "Cannot modify deleted member: " + member.name)}
+                response = {
+                    'Message': str("Cannot modify deleted member: " + member.name)
+                }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -140,8 +142,9 @@ class MemberViewSet(viewsets.ModelViewSet):
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
-                response = {'Message': str(""
-                                           "Cannot modify deleted member: " + member.name)}
+                response = {
+                    'Message': str("Cannot modify deleted member: " + member.name)
+                }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
             else:
@@ -149,8 +152,9 @@ class MemberViewSet(viewsets.ModelViewSet):
                 if member.name != 'Family':
                     member.is_deleted = True
                     member.save()
-                    response = {'Message': str(""
-                                               "Member deleted: " + member.name)}
+                    response = {
+                        'Message': str("Member deleted: " + member.name)
+                    }
                     return Response(response,
                                     status=status.HTTP_200_OK)
                 else:
