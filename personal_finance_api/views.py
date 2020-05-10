@@ -99,15 +99,18 @@ class MemberViewSet(viewsets.ModelViewSet):
         """Check Member name 'Family' and run PATCH"""
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
-            if member.is_deleted == False:
+            if member.is_deleted != True:
                 # Cannot edit Member family
                 if member.name != 'Family':
                     return super().partial_update(request, *args, **kwargs)
                 else:
-                    super().permission_denied(self.request, 'Error: Cannot modify member \'Family\'! ')
+                    super().permission_denied(self.request,
+                                              'Error: Cannot modify member \'Family\'! ')
             else:
-                response = {'Message': str("Cannot modify deleted member: " + member.name)}
-                return Response(response, status=status.HTTP_403_FORBIDDEN)
+                response = {'Message': str("Cannot modify deleted member: "
+                                           + member.name)}
+                return Response(response,
+                                status=status.HTTP_403_FORBIDDEN)
         except Exception as e:
             return super().permission_denied(self.request, e)
 
@@ -115,15 +118,18 @@ class MemberViewSet(viewsets.ModelViewSet):
         """Check Member name 'Family' and run PUT"""
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
-            if member.is_deleted == False:
+            if member.is_deleted != True:
                 # Cannot edit Member 'family'
                 if member.name != 'Family':
                     return super().update(request, *args, **kwargs)
                 else:
-                    super().permission_denied(self.request, 'Error: Cannot modify member \'Family\'! ')
+                    super().permission_denied(self.request,
+                                              'Error: Cannot modify member \'Family\'! ')
             else:
-                response = {'Message': str("Cannot modify deleted member: " + member.name)}
-                return Response(response, status=status.HTTP_403_FORBIDDEN)
+                response = {'Message': str("Cannot modify deleted member: "
+                                           + member.name)}
+                return Response(response,
+                                status=status.HTTP_403_FORBIDDEN)
         except Exception as e:
             return super().permission_denied(self.request, e)
 
@@ -131,17 +137,21 @@ class MemberViewSet(viewsets.ModelViewSet):
         """Check Member name 'Family' and run DELETE"""
         try:
             member = MemberModel.objects.get(id=kwargs['pk'])
-            if member.is_deleted == False:
+            if member.is_deleted != True:
                 # Cannot DELETE Member family
                 if member.name != 'Family':
                     member.is_deleted = True
                     member.save()
                     response = {'Message': str("Member deleted: " + member.name)}
-                    return Response(response, status=status.HTTP_200_OK)
+                    return Response(response,
+                                    status=status.HTTP_200_OK)
                 else:
-                    super().permission_denied(self.request, 'Error: Cannot modify member \'Family\'! ')
+                    super().permission_denied(self.request,
+                                              'Error: Cannot modify member \'Family\'! ')
             else:
-                response = {'Message': str("Cannot modify deleted member: " + member.name)}
-                return Response(response, status=status.HTTP_403_FORBIDDEN)
+                response = {'Message': str("Cannot modify deleted member: "
+                                           + member.name)}
+                return Response(response,
+                                status=status.HTTP_403_FORBIDDEN)
         except Exception as e:
             return super().permission_denied(self.request, e)

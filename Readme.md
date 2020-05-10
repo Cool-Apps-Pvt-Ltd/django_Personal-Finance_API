@@ -75,4 +75,4 @@ Travis-ci Test passed successfully till this point
 5. Updated HomeOrgUpdate, UpdateOwnProfile in personal_finance_api/permissions.py
 6. Updated Organization, Member Models in personal_finance_api/models.py to add fields
 7. Updated Serializers based on point 6
-8. Updated personal_finance_api/apps.py to clear indentation 
+8. Updated personal_finance_api/apps.py to clear indentation [Commit - 20f627d..dcb2215  setup-organization -> setup-organization]
