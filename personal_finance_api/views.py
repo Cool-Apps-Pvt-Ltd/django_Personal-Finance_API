@@ -111,8 +111,10 @@ class MemberViewSet(viewsets.ModelViewSet):
                 if member.name != 'Family':
                     return super().partial_update(request, *args, **kwargs)
                 else:
-                    super().permission_denied(self.request,
-                                              'Error: Cannot modify member \'Family\'! ')
+                    response = {
+                        'Message': 'CAN\'T modify member \'Family\''
+                    }
+                    super().permission_denied(self.request, response)
 
         except Exception as e:
             return super().permission_denied(self.request, e)
@@ -132,8 +134,10 @@ class MemberViewSet(viewsets.ModelViewSet):
                 if member.name != 'Family':
                     return super().update(request, *args, **kwargs)
                 else:
-                    super().permission_denied(self.request,
-                                              'Error: Cannot modify member \'Family\'! ')
+                    response = {
+                        'Message': 'CAN\'T update member \'Family\''
+                    }
+                    super().permission_denied(self.request, response)
         except Exception as e:
             return super().permission_denied(self.request, e)
 
@@ -159,7 +163,7 @@ class MemberViewSet(viewsets.ModelViewSet):
                                     status=status.HTTP_200_OK)
                 else:
                     response = {
-                        'Message': 'CAN\'T delete member \'Family'\
+                        'Message': 'CAN\'T delete member \'Family\''
                     }
                     super().permission_denied(self.request, response)
 
