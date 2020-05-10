@@ -102,7 +102,7 @@ class MemberViewSet(viewsets.ModelViewSet):
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
                 response = {
-                    'Message': str("Cannot modify deleted member: " + member.name)
+                    'Message': 'CAN\'T modify deleted member: ' + member.name
                 }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
@@ -123,7 +123,7 @@ class MemberViewSet(viewsets.ModelViewSet):
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
                 response = {
-                    'Message': str("Cannot modify deleted member: " + member.name)
+                    'Message': 'CAN\'T modify deleted member: ' + member.name
                 }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
@@ -143,7 +143,7 @@ class MemberViewSet(viewsets.ModelViewSet):
             member = MemberModel.objects.get(id=kwargs['pk'])
             if member.is_deleted:
                 response = {
-                    'Message': str("Cannot modify deleted member: " + member.name)
+                    'Message': 'CAN\'T modify deleted member: ' + member.name
                 }
                 return Response(response,
                                 status=status.HTTP_403_FORBIDDEN)
@@ -153,13 +153,15 @@ class MemberViewSet(viewsets.ModelViewSet):
                     member.is_deleted = True
                     member.save()
                     response = {
-                        'Message': str("Member deleted: " + member.name)
+                        'Message': 'Deleted: ' + member.name
                     }
                     return Response(response,
                                     status=status.HTTP_200_OK)
                 else:
-                    super().permission_denied(self.request,
-                                              'Error: Cannot modify member \'Family\'! ')
+                    response = {
+                        'Message': 'CAN\'T delete member \'Family'\
+                    }
+                    super().permission_denied(self.request, response)
 
         except Exception as e:
             return super().permission_denied(self.request, e)
