@@ -65,3 +65,14 @@ Travis-ci Test passed successfully till this point
 2. Added AdminSiteTests class and test_users_listed method to test Admin Site Users
 3. Updated personal_finance_api/admin.py to list Users in Admin Site 
 4. Added test_user_change_page to personal_finance_api/tests/tests_admin.py to test user profile change in admin [Commit - f56cc1a..c7ee286  setup-organization -> setup-organization]
+5. Updated test_admin.py indentation [Commit -  c7ee286..20f627d  setup-organization -> setup-organization]
+
+# Bug Fixes
+1. MemberViewSet in personal_finance_api/views.py failure in query_set. Fixed org_id
+2. Added URL in personal_finance_api/urls.py for MemberViewSet
+3. Fixed UserProfileViewSet in personal_finance_api/views.py  
+4. Created OrgMemberUpdate in personal_finance_api/permissions.py 
+5. Updated HomeOrgUpdate, UpdateOwnProfile in personal_finance_api/permissions.py
+6. Updated Organization, Member Models in personal_finance_api/models.py to add fields
+7. Updated Serializers based on point 6
+8. Updated personal_finance_api/apps.py to clear indentation 

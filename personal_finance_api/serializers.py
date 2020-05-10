@@ -31,11 +31,15 @@ class OrganizationSerializer(serializers.ModelSerializer):
     class Meta:
         model = models.OrganizationModel
         fields = ('id', 'home_name', 'license_state',
-                  'license_expiry', 'dashboard_currency', 'user')
+                  'license_expiry', 'dashboard_currency', 'user',
+                  'created_on', 'is_deleted', 'is_shutdown')
         extra_kwargs = {
             'user': {'read_only': True, },
             'license_state': {'read_only': True, },
             'license_expiry': {'read_only': True, },
+            'created_on': {'read_only': True, },
+            'is_deleted': {'read_only': True, },
+            'is_shutdown': {'read_only': True, },
         }
 
 
@@ -43,7 +47,12 @@ class MemberSerializer(serializers.ModelSerializer):
     """Serializes Members in an Org"""
     class Meta:
         model = models.MemberModel
-        fields = ('id', 'name', 'org', )
+        fields = ('id', 'name', 'org',
+                  'last_updated_on', 'created_on',
+                  'is_deleted')
         extra_kwargs = {
             'org': {'read_only': True, },
+            'created_on': {'read_only': True, },
+            'is_deleted': {'read_only': True, },
+            'last_updated_on': {'read_only': True, },
         }

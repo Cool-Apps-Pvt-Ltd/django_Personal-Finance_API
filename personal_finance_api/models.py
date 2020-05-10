@@ -1,4 +1,6 @@
 from django.db import models
+from datetime import datetime
+from django.utils import timezone
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
@@ -73,12 +75,18 @@ class OrganizationModel(models.Model):
     dashboard_currency = models.CharField(default='INR',
                                           choices=CURRENCIES,
                                           max_length=3)
+    is_deleted = models.BooleanField(default=False, blank=False)
+    is_shutdown = models.BooleanField(default=False, blank=False)
+    created_on = models.DateField(auto_now_add=True, editable=False)
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
 
 
 class MemberModel(models.Model):
     """Members of the home org"""
     name = models.CharField(max_length=10, blank=False, default="Family")
+    created_on = models.DateField(auto_now_add=True, editable=False)
+    last_updated_on = models.DateField(auto_now_add=True)
+    is_deleted = models.BooleanField(default=False, blank=False)
     org = models.ForeignKey(OrganizationModel, on_delete=models.CASCADE)
 
     class Meta:
