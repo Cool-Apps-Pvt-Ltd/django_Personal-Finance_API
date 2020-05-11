@@ -1,9 +1,10 @@
 from rest_framework import viewsets, filters, status
 from rest_framework.authentication import TokenAuthentication
 from rest_framework.authtoken.views import ObtainAuthToken
+from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.settings import api_settings
-
+from .serializers import UserProfileSerializer
 from personal_finance_api import serializers, permissions
 from .models import UserProfile, OrganizationModel, MemberModel
 
@@ -49,6 +50,31 @@ class UserProfileViewSet(viewsets.ModelViewSet):
         return super().get_queryset().filter(id=self.request.user.id)
 
 
+@api_view(['POST'])
+def create_user(request, *args, **kwargs):
+    if 'email' in request.data and \
+            'password' in request.data and \
+            'last_name' in request.data and \
+            'first_name' in request.data:
+        try:
+            user = UserProfile()
+            user.email = request.data['email']
+            user.set_password(request.data['password'])
+            user.first_name = request.data['first_name']
+            user.last_name = request.data['last_name']
+            user.save()
+
+            serializer = UserProfileSerializer(user, many=False)
+            response = {'message': 'User Created', 'result': serializer.data}
+            return Response(response, status=status.HTTP_200_OK)
+        except Exception as e:
+            response = {'Error': str(e)}
+            return Response(response, status=status.HTTP_400_BAD_REQUEST)
+    else:
+        response = {'message': 'Invalid Request'}
+        return Response(response, status=status.HTTP_400_BAD_REQUEST)
+
+
 class LoginApiView(ObtainAuthToken):
     """User Login and handle Token creation"""
     renderer_classes = api_settings.DEFAULT_RENDERER_CLASSES
@@ -82,7 +108,7 @@ class MemberViewSet(viewsets.ModelViewSet):
     serializer_class = serializers.MemberSerializer
     queryset = MemberModel.objects.all()
     authentication_classes = (TokenAuthentication,)
-    permission_classes = (permissions.OrgMemberUpdate,)
+    permission_classes = (permissions.OrgElementPermissions,)
 
     def get_queryset(self):
         """GET members in an org"""

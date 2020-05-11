@@ -15,11 +15,7 @@ Features
 2. Income Model
  - Collects Income transactions for home org members
  - Member and Org are foreign keys. Income is deleted on their deletion
-
-@todo
-#########
-1. Income model
- - Add signals and connector to create MonthYear entry if it doesnt exist
+ - Added signals and connector to create MonthYear entry if it doesnt exist
 
 """
 
@@ -58,7 +54,7 @@ class Income(models.Model):
                                      choices=INCOME_SOURCE,
                                      blank=False,
                                      max_length=10)
-    income_before_tax = models.FloatField(default=0.0, blank=False)
+    income_before_tax = models.FloatField(blank=False)
     tax_withheld = models.FloatField(default=0.0, blank=False)
     deductions = models.FloatField(default=0.0, blank=False)
     currency = models.CharField(default='INR',
@@ -66,6 +62,7 @@ class Income(models.Model):
                                 max_length=3)
     last_updated_on = models.DateField(auto_now_add=True)
     month = models.IntegerField(default=datetime.today().month,
+                                choices=[(i, i) for i in range(1, 13)],
                                 validators=[
                                     MinValueValidator(1),
                                     MaxValueValidator(12)
@@ -79,8 +76,10 @@ class Income(models.Model):
                                blank=False)
 
     # Keys
-    member = models.ForeignKey(MemberModel, on_delete=models.CASCADE)
-    org = models.ForeignKey(OrganizationModel, on_delete=models.CASCADE)
+    org = models.ForeignKey(OrganizationModel,
+                            on_delete=models.CASCADE, )
+    member = models.ForeignKey(MemberModel,
+                               on_delete=models.CASCADE, )
 
     class Meta:
         index_together = ('member', 'org')
@@ -102,5 +101,5 @@ class CurrencyConverter(models.Model):
     conversion_month = models.ForeignKey(MonthYear, on_delete=models.CASCADE)
 
     class Meta:
-        unique_together = (('currency', 'conversion_month'))
-        index_together = (('currency', 'conversion_month'))
+        unique_together = ('currency', 'conversion_month')
+        index_together = ('currency', 'conversion_month')

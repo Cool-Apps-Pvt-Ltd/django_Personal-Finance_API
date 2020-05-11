@@ -1,3 +1,5 @@
+from personal_finance_api.models import MemberModel
+
 # For core_finance_app/models
 CURRENCIES = [
     ('INR', 'Indian Rupee'),

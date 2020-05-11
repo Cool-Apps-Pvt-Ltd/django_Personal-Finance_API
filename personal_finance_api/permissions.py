@@ -44,10 +44,10 @@ class HomeOrgUpdate(permissions.BasePermission):
             return request.user.is_authenticated
 
 
-class OrgMemberUpdate(permissions.BasePermission):
+class OrgElementPermissions(permissions.BasePermission):
     """
         Return Permissions for Superuser/admin/org
-        owner to edit home elements
+        owner to edit Org elements
     """
     def has_permission(self, request, view):
         try:

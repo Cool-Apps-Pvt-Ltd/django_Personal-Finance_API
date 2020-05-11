@@ -100,3 +100,19 @@ Indentation Fix [Commit - 9f9cfb5..955ab0f  setup-organization -> setup-organiza
 6. Updated core_finance_app/urls.py to add reference to IncomeViewSet
 7. Updated personal_finance/urls.py to add reference to core_finance_app [Commit - bceb5a3..ae2d075  setup-finance-module-app -> setup-finance-module-app]
 Indentation Fixes [Commit - ae2d075..4bb2676  setup-finance-module-app -> setup-finance-module-app]
+Indentation Fixes [Commit - 4bb2676..9eced5a  setup-finance-module-app -> setup-finance-module-app]
+
+- In personal_finance_api App
+8. Updated personal_finance_api/permissions.py OrgElementPermissions class to be used across org
+9. Updated personal_finance_api/views.py to add CreateUser APIView for user Registration
+10. Updated personal_finance_api/urls.py to add API endpoint for 9
+11. Updated 'email' to NOTNULL in UserProfileModel personal_finance_api/models.py 
+
+- In core_finance_app
+12. Updated IncomeViewSet in core_finance_app/views.py for PUT/PATCH/POST/GET
+13. Automation added for IncomeViewSet to account for MonthYear Model
+14. Updated core_finance_app/urls.py to add reference to Org Members
+15. Updated core_finance_app/urls.py to add create_month_year Connector
+16. Created MonthYearSerializer in core_finance_app/serializers.py
+17. Updated Income Model in core_finance_app/models.py
+18. Created core_finance_app/constants.py 
