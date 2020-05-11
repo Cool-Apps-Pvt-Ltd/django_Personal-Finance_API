@@ -8,14 +8,14 @@ from .models import Income, MonthYear
 from .serializers import IncomeSerializer
 
 """
-1. is_valid_member_in_org 
+1. is_valid_member_in_org
  - Given MemberID and OrgID, method validates if a member belongs to the org
 
 2. IncomeViewSet
  - Create Added. Validation for Members within OrgID added
  - POST/PUT Added. Validation added Month-Year-Org in MonthYear Model
  - For PATCH, Validation added for MM-YY-Org and for existing data
- 
+
 """
 
 
@@ -42,12 +42,17 @@ class IncomeViewSet(viewsets.ModelViewSet):
             try:
                 mm = serializer.validated_data['month']
                 yy = serializer.validated_data['year']
-                month_year = MonthYear.objects.get(org=self.kwargs['org_id'], year=yy, month=mm).is_locked
-            except:
+                month_year = MonthYear.objects.get(
+                    org=self.kwargs['org_id'],
+                    year=yy,
+                    month=mm).is_locked
+            except Exception as e:
+                print(e)
                 pass
             # If MonthYear exists and is locked
             if month_year:
-                return super().permission_denied(self.request, 'CAN\'T Create! Locked Month')
+                return super().permission_denied(
+                    self.request, 'CAN\'T Create! Locked Month')
 
             else:
                 # Validate if Member is a part of the Org
@@ -58,8 +63,8 @@ class IncomeViewSet(viewsets.ModelViewSet):
                         get(id=self.kwargs['org_id'])
                     super().perform_create(serializer.save(org=org_object))
                 else:
-                    super().permission_denied(self.request,
-                                              'Invalid Request. Permission Denied!')
+                    super().permission_denied(
+                        self.request, 'Invalid Request. Permission Denied!')
 
         except Exception as e:
             return super().permission_denied(self.request, e)
@@ -69,9 +74,10 @@ class IncomeViewSet(viewsets.ModelViewSet):
 
         try:
             org = OrganizationModel.objects.get(id=self.kwargs['org_id'])
-            month_year = MonthYear.objects.get_or_create(month=request.data['month'],
-                                                         year=request.data['year'],
-                                                         org=org)
+            month_year = MonthYear.objects.get_or_create(
+                month=request.data['month'],
+                year=request.data['year'],
+                org=org)
             # Get MMYY Object
             month_year = month_year[0]
 
