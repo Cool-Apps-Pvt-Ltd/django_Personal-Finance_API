@@ -8,7 +8,7 @@ from .constants import CURRENCIES, INCOME_SOURCE
 Features
 ##########
 1. MonthYear Model
- - Foreign Key is Org. 
+ - Foreign Key is Org.
  - Independent Model to summarize data from other Child models for org
  - No other Model is a direct child to this Model
 

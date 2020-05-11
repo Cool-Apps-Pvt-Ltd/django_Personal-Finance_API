@@ -99,4 +99,4 @@ Indentation Fix [Commit - 9f9cfb5..955ab0f  setup-organization -> setup-organiza
 5. Created IncomeViewSet in core_finance_app/views.py 
 6. Updated core_finance_app/urls.py to add reference to IncomeViewSet
 7. Updated personal_finance/urls.py to add reference to core_finance_app [Commit - bceb5a3..ae2d075  setup-finance-module-app -> setup-finance-module-app]
-Indentation Fixes 
+Indentation Fixes [Commit - ae2d075..4bb2676  setup-finance-module-app -> setup-finance-module-app]
