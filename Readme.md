@@ -82,3 +82,20 @@ Indentation Fix [Commit - 52264e1..8a8d594  setup-organization -> setup-organiza
 Indentation Fix [Commit - 8a8d594..441577a  setup-organization -> setup-organization]
 Indentation Fix [Commit - 441577a..9f9cfb5  setup-organization -> setup-organization]
 Indentation Fix [Commit - 9f9cfb5..955ab0f  setup-organization -> setup-organization]
+
+# GIT Branch setup-finance-module-app
+1. Updated personal_finance_api/permissions.py and personal_finance_api/views.py to allow POST for UserProfile
+2. Created new App core_finance_app
+3. Updated personal_finance/settings.py to add the app created in '2' to INSTALLED_APPS_LIST
+4. Updated personal_finance_api/constants.py to add URL 
+5. Updated personal_finance_api/models.py to add URL to Organization Model
+6. Updated personal_finance_api/serializers.py to add URL to Organization Serializer
+
+# core_finance_app
+1. Created core_finance_app/ serializers.py, constants.py, signals.py
+2. Updated core_finance_app/apps.py to connect to signals.py
+3. Created Models MonthYear, Income, CurrencyConverter in core_finance_app/models.py
+4. Created IncomeSerializer in core_finance_app/serializers.py
+5. Created IncomeViewSet in core_finance_app/views.py 
+6. Updated core_finance_app/urls.py to add reference to IncomeViewSet
+7. Updated personal_finance/urls.py to add reference to core_finance_app

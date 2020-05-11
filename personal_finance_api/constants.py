@@ -12,3 +12,5 @@ CURRENCIES = [
     ('USD', 'US Dollar'),
     ('EUR', 'EURO'),
 ]
+
+URL = 'http://localhost:8000/api/'

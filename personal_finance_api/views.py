@@ -12,7 +12,7 @@ READY and TESTED
 ###############################################
 1. UserProfileViewSet
 - Superusers can GET/PUT/PATCH any Profile
-- Regular Users only GET/PUT/PATCH/DELETE their own profile
+- Regular Users only GET/PUT/PATCH/POST/DELETE their own profile
 - Permissions for superuser and regular user tested
 
 2. LoginApiVIew

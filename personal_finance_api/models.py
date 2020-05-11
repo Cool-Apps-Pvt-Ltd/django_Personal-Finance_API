@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import AbstractBaseUser
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.models import BaseUserManager
-from .constants import CURRENCIES, ORG_LICENSE_STATE
+from .constants import CURRENCIES, ORG_LICENSE_STATE, URL
 
 
 class UserProfileManager(BaseUserManager):
@@ -76,6 +76,10 @@ class OrganizationModel(models.Model):
     is_deleted = models.BooleanField(default=False, blank=False)
     is_shutdown = models.BooleanField(default=False, blank=False)
     created_on = models.DateField(auto_now_add=True, editable=False)
+
+    def url(self):
+        return URL + "%s/" % self.id
+
     user = models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
 
 

@@ -8,11 +8,12 @@ class UpdateOwnProfile(permissions.BasePermission):
     def has_permission(self, request, view):
         """Check if the user is trying to access their own profile"""
         # POST doesn't need user to be authenticated
-        if request.method in ['GET', 'PUT', 'PATCH']:
-            # Allow Superusers to access GET/PUT/PATCH User Profile
+        if request.method in ['GET', 'PUT', 'PATCH', 'POST']:
+            # Allow Superusers to access GET/PUT/PATCH/POST User Profile
             if request.user.is_staff or request.user.is_superuser:
                 return True
-            # Allow Users to GET/PUT/PATCH Userprofile
+            # Allow Users to GET/PUT/PATCH/POST Userprofile
+            print("\n\n\n", request.user.is_authenticated, "\n\n\n")
             return request.user.is_authenticated
 
         elif request.method in ['DELETE']:

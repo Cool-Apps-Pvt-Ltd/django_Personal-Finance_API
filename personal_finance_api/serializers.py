@@ -30,7 +30,7 @@ class OrganizationSerializer(serializers.ModelSerializer):
     """Serializes Home Organization Container Object"""
     class Meta:
         model = models.OrganizationModel
-        fields = ('id', 'home_name', 'license_state',
+        fields = ('id', 'url', 'home_name', 'license_state',
                   'license_expiry', 'dashboard_currency', 'user',
                   'created_on', 'is_deleted', 'is_shutdown')
         extra_kwargs = {
