@@ -8,9 +8,10 @@ from .constants import CURRENCIES, INCOME_SOURCE
 Features
 ##########
 1. MonthYear Model
- - Foreign Key is Org. Independent Model to summarize data from other Child models for org
+ - Foreign Key is Org. 
+ - Independent Model to summarize data from other Child models for org
  - No other Model is a direct child to this Model
- 
+
 2. Income Model
  - Collects Income transactions for home org members
  - Member and Org are foreign keys. Income is deleted on their deletion
@@ -19,7 +20,7 @@ Features
 #########
 1. Income model
  - Add signals and connector to create MonthYear entry if it doesnt exist
- 
+
 """
 
 
@@ -92,7 +93,10 @@ class CurrencyConverter(models.Model):
     """Currency conversion database """
     currency = models.CharField(choices=CURRENCIES, max_length=3, blank=False)
     # Value of one USD in the currency listed above
-    one_dollar_in_currency = models.FloatField(blank=False, validators=[MinValueValidator(0)])
+    one_dollar_in_currency = models.FloatField(blank=False,
+                                               validators=[
+                                                   MinValueValidator(0)
+                                               ])
 
     # Keys
     conversion_month = models.ForeignKey(MonthYear, on_delete=models.CASCADE)
