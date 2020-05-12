@@ -125,4 +125,4 @@ Indentation Fixes [Commit - b6803d0..45bf7e7  setup-finance-module-app -> setup-
 23. Created CurrencyConverter Model, CurrencySerializer and CurrencyViewSet
 24. Added to_usd and from_usd_to_primary methods in personal_finance_api/models.py
 25. Added Currency URL in personal_finance_api/urls.py
-26. Added CurrencyModel to Admin 
+26. Added CurrencyModel to Admin [Commit - 45bf7e7..42d79a7  setup-finance-module-app -> setup-finance-module-app]

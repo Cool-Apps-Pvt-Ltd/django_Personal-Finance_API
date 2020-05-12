@@ -63,7 +63,7 @@ class MonthYear(models.Model):
                     self.primary_currency,
                     self.month, self.year,
                     self.org)
-                # Check if there is a conversion object available for this month
+                # Check if there is a currency obj available for this month
                 if conversion['result'] == 'success':
                     total_income += conversion['value']
                 else:
@@ -212,7 +212,8 @@ class MonthYear(models.Model):
             # 3. If Income entries are not in USD or Monthly Primary
             else:
                 # Convert current value to standard USD
-                get_usd = to_usd(entry.tax_withheld, self.primary_currency, entry)
+                get_usd = to_usd(
+                    entry.tax_withheld, self.primary_currency, entry)
                 if get_usd['result'] == 'success':
                     get_usd = get_usd['value']
                 else:
@@ -250,7 +251,8 @@ class MonthYear(models.Model):
             # 3. If Income entries are not in USD or Monthly Primary
             else:
                 # Convert current value to standard USD
-                get_usd = to_usd(entry.deductions, self.primary_currency, entry)
+                get_usd = to_usd(
+                    entry.deductions, self.primary_currency, entry)
                 if get_usd['result'] == 'success':
                     get_usd = get_usd['value']
                 else:
