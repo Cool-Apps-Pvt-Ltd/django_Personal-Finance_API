@@ -116,4 +116,13 @@ Indentation Fixes [Commit - 4bb2676..9eced5a  setup-finance-module-app -> setup-
 16. Created MonthYearSerializer in core_finance_app/serializers.py
 17. Updated Income Model in core_finance_app/models.py
 18. Created core_finance_app/constants.py [Commit - 9eced5a..b6803d0  setup-finance-module-app -> setup-finance-module-app]
-Indentation Fixes 
+Indentation Fixes [Commit - b6803d0..45bf7e7  setup-finance-module-app -> setup-finance-module-app]
+
+19. Updated Income Model - Indexes, 
+20. Created MonthYear Model - Fields total_income, total_deductions, total_tax_withheld
+21. Updated MonthYearSerializer to add fields above
+22. Removed MemberViewSet URL in personal_finance_api/urls.py
+23. Created CurrencyConverter Model, CurrencySerializer and CurrencyViewSet
+24. Added to_usd and from_usd_to_primary methods in personal_finance_api/models.py
+25. Added Currency URL in personal_finance_api/urls.py
+26. Added CurrencyModel to Admin 
